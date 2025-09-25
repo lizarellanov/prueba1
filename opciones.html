@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios - Sparaperros</title>  <!--titulo pagina-->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        
+        body {
+            background-color: #f0f9fb; /*fondo pagina*/
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="%2390DDE9" fill-opacity="0.2" d="M30,15 Q50,5 70,15 Q85,30 85,50 Q85,70 70,85 Q50,95 30,85 Q15,70 15,50 Q15,30 30,15 Z" /></svg>');
+            color: #5ec5e8;
+            padding: 20px; /*largo de la pagina*/
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        header { /*encabezado*/
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 10px;
+            background-color: #007095;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px #035069; /*sombreado*/
+            width: 100%;
+            max-width: 1000px;
+        }
+        
+        h1 { /*titulo spa canino*/
+            font-size: 2.8rem;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #ffffff;
+        }
+        
+        .services-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap; /*envoltura flxible*/
+            gap: 25px; /*espacio entre servicios*/
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .service-card { /*opciones del spa*/
+            background: linear-gradient(to bottom, #007da6, #aff5e1);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgb(0, 102, 131);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            width: 220px; /* Tamaño reducido para que quepan 5 en una línea */
+            flex-shrink: 0;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px #00709566;
+        }
+        
+        .service-image { /*linea que divide img de txt*/
+            width: 100%; /*ancho*/
+            height:100px; /* Altura reducida */
+            object-fit: cover;
+            border-bottom: 2px solid #ffffff; /*ancho linea*/
+        }
+        
+        .service-content {
+            padding: 20px;
+        }
+        
+        .service-title {
+            font-size: 1.4rem; /* Tamaño de fuente reducido */
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+        
+        .service-description {
+            color: #007095;
+            margin-bottom: 15px;
+            line-height: 1.4;
+            font-size: 0.9rem; /* Tamaño de fuente reducido */
+        }
+        
+        .service-button {
+            display: inline-block;
+            background-color: #ffffff;
+            color: #57C9AE; /*letra*/
+            padding: 10px 18px; /* Padding reducido */
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem; /* Tamaño de fuente reducido */
+            transition: background-color 0.3s ease;
+        }
+        
+        .service-button:hover {
+            background-color: #007095; /*cuando el cursor esta encima*/
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            color: #ffffff;
+            background-color: #007095;
+            border-radius: 15px;
+            margin-top: 100px;
+            width: 100%;
+            max-width: 1000px; /*largo del cuadro*/
+        }
+        
+        @media (max-width: 1200px) {
+            .services-container {
+                width: 100%;
+                overflow-x: auto;
+                padding-bottom: 20px;
+                justify-content: flex-start;
+            }
+            
+            .service-card {
+                flex-shrink: 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .service-card {
+                width: 200px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Spa Canino "Sparaperros"</h1>
+        <p class="subtitle">"Amor y cuidado en cada patita"</p>
+    </header>
+    
+<br>
+
+    <div class="services-container">
+        <div class="service-card">
+            <img src="IMG PNG/estetica canina.png">
+            <div class="service-content">
+                <h2 class="service-title">Estética Canina</h2>
+                <p class="service-description">Servicios completos de estética para que tu mascota luzca increíble.</p>
+                <a href="calendario.html" class="service-button">Reservar</a>
+            </div>
+        </div>
+        
+        <div class="service-card">
+            <img src="IMG PNG/baño relajante.png">
+            <div class="service-content">
+                <h2 class="service-title">Baño Relajante</h2>
+                <p class="service-description">Baño con productos naturales que dejan el pelaje suave y brillante.</p>
+                <a href="calendario.html" class="service-button">Reservar</a>
+            </div>
+        </div>
+        
+        <div class="service-card">
+            <img src="IMG PNG/corte de uñas.png">
+            <div class="service-content">
+                <h2 class="service-title">Corte de Uñas</h2>
+                <p class="service-description">Corte profesional de uñas con técnicas seguras y sin estrés.</p>
+                <a href="calendario.html" class="service-button">Reservar</a>
+            </div>
+        </div>
+        
+        <div class="service-card">
+            <img src="IMG PNG/hotel canino.png">
+            <div class="service-content">
+                <h2 class="service-title">Hotel Canino</h2>
+                <p class="service-description">Alojamiento de lujo con áreas de juego y atención personalizada.</p>
+                <a href="calendario.html" class="service-button">Reservar</a>
+            </div>
+        </div>
+        
+        <div class="service-card">
+            <img src="IMG PNG/veterinario.png">
+            <div class="service-content">
+                <h2 class="service-title">Veterinario</h2>
+                <p class="service-description">Atención veterinaria especializada con consultas y vacunación.</p>
+                <a href="calendario.html" class="service-button">Reservar</a>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <footer>
+        <p>© 2025 Spa Canino "Sparaperros" - Todos los derechos reservados</p>
+        <p>Teléfono: +52 1 272 233 0976 | Email: sparaperros4@gmail.com</p>
+    </footer>
+
+<script>
+        // Verificar si el usuario está autenticado
+        window.onload = function() {
+            const isAuthenticated = localStorage.getItem('userAuthenticated');
+            
+            if (!isAuthenticated || isAuthenticated !== 'true') {
+                // Si no está autenticado, redirigir al inicio de sesión
+                alert('Por favor, inicie sesión primero');
+                window.location.href = 'iniciosesion.html';
+            } else {
+                // Si está autenticado, mostrar un mensaje de bienvenida
+                console.log('Usuario autenticado correctamente');
+            }
+        };
+    </script>
+
+</body>
+</html>

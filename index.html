@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sparaperros - Inicio de Sesión</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        
+        body {
+            background-color: #f0f9fb;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="%2390DDE9" fill-opacity="0.2" d="M30,15 Q50,5 70,15 Q85,30 85,50 Q85,70 70,85 Q50,95 30,85 Q15,70 15,50 Q15,30 30,15 Z" /></svg>');
+            background-repeat: repeat;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            width: 100%;
+            max-width: 900px;
+        }
+        
+        .header h1 { /*titulo sparaperros*/
+            color: #007095;
+            font-size: 42px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .header p { /*titulo lema*/
+            color: #007095;
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .container {
+            display: flex;
+            width: 900px;
+            max-width: 100%;
+            height: auto;
+            min-height: 500px;
+            background: rgb(226, 255, 255);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 112, 149, 0.503);
+        }
+        
+        .left-panel {
+            flex: 1;
+            background: linear-gradient(135deg, #007095 0%, #A3EAD6 100%); /*fondo degradado*/
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff; /*titulo bienvenido*/
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .left-panel::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><path fill="%23ffffff" fill-opacity="0.3" d="M20,10 Q25,5 30,10 Q35,15 35,20 Q35,25 30,30 Q25,35 20,30 Q15,25 15,20 Q15,15 20,10 Z" /></svg>');
+            background-repeat: repeat;
+            opacity: 0.2;
+        }
+        
+        .dog-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+        
+        .left-panel h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            text-align: center;
+            z-index: 1;
+        }
+        
+        .left-panel p {
+            text-align: center;
+            font-size: 16px;
+            z-index: 1;
+            color: #ffffff; /*titulo abajo bienvenido*/
+        }
+        
+        .right-panel {
+            flex: 1;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: white;
+        }
+        
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .logo h2 {
+            color: #007095; /*iniciar secion en*/
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color: #57C9AE;/*sparaperros*/
+        }
+        
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #0084a2; /*linea de iniciar sesion crear cuenta*/
+        }
+        
+        .tab {
+            padding: 12px 20px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #57C9AE; /*iniciar sesion-crear cuenta*/
+            transition: all 0.3s;
+            flex: 1;
+            text-align: center;
+        }
+        
+        .tab.active {
+            color: #007095;
+            border-bottom: 3px solid #57C9AE;
+        }
+        
+        .form-container {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form {
+            display: none;
+        }
+        
+        .form.active {
+            display: block;
+        }
+        
+        .input-group {
+            margin-bottom: 15px;
+            position: relative;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #007095; /*correo y contra*/
+            font-weight: 500;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 12px 12px 12px 40px;
+            border: 1px solid #007095; /*bordes de correo y contra*/
+            border-radius: 10px;
+            font-size: 15px;
+            transition: border 0.3s;
+            background-color: #f7fdfb;
+        }
+        
+        .input-group input:focus {
+            border-color: #007095;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(13, 91, 73, 0.978);
+        }
+        
+        .input-group i {
+            position: absolute;
+            left: 15px;
+            top: 40px;
+            color: #007095; /*iconos*/
+        }
+        
+        .btn {
+            background: #57C9AE;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            background: #007095; /*flot iniciar sesion*/
+        }
+        
+        .separator {
+            text-align: center;
+            margin: 10px 0;
+            position: relative;
+            color: #A3EAD6; /*o continuar con*/
+            font-size: 14px;
+        }
+        
+        .separator::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 35%;
+            height: 1px;
+            background: #A3EAD6;
+        }
+        
+        .separator::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 50%;
+            width: 35%;
+            height: 1px;
+            background: #A3EAD6; /*linea de continuar con*/
+        }
+        
+        .social-login {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .social-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #007095cf;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 18px;
+            color: #ffffff;
+        }
+        
+        .social-btn:hover {
+            background: #d4edf5;
+        }
+        
+        .forgot-password {
+            text-align: center;
+            margin-top: 15px;
+        }
+        
+        .forgot-password a {
+            color: #A3EAD6;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        
+        .forgot-password a:hover {
+            color: #A3EAD6;
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 950px) {
+            .container {
+                flex-direction: column;
+                width: 90%;
+                height: auto;
+            }
+            
+            .left-panel {
+                padding: 30px 20px;
+            }
+            
+            .right-panel {
+                padding: 25px 20px;
+            }
+            
+            .header h1 {
+                font-size: 32px;
+            }
+            
+            .header p {
+                font-size: 16px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .header {
+                margin-bottom: 20px;
+            }
+            
+            .header h1 {
+                font-size: 28px;
+            }
+            
+            .header p {
+                font-size: 14px;
+            }
+            
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .tab {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>SPARAPERROS</h1>
+        <p>"Amor y cuidado en cada patita"</p>
+    </div>
+    
+    <div class="container">
+        <div class="left-panel">
+            <img src="logo.svg">
+            <h2>¡Bienvenido a Sparaperros!</h2>
+            <p>El lugar donde tu mejor amigo recibe el cuidado que se merece. Reserva citas, servicios de estética y más.</p>
+        </div>
+        
+        <div class="right-panel">
+            <div class="logo">
+                <h2>Iniciar Sesión en <span>Sparaperros</span></h2>
+            </div>
+            
+            <div class="tabs">
+                <div class="tab active" onclick="showForm('login')">Iniciar Sesión</div>
+                <div class="tab" onclick="showForm('register')">Crear Cuenta</div>
+            </div>
+            
+            <div class="form-container">
+                <form class="form active" id="login-form">
+                    <div class="input-group">
+                        <label for="email">Correo Electrónico</label>
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="email" placeholder="tu@email.com" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="password">Contraseña</label>
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" placeholder="Tu contraseña" required>
+                    </div>
+                    
+                    <button type="submit" class="btn">Iniciar Sesión</button>
+                    
+                    <div class="forgot-password">
+                        <a href="#">¿Olvidaste tu contraseña?</a>
+                    </div>
+                    
+                    <div class="separator">o continuar con</div>
+                    
+                    <div class="social-login">
+                        <div class="social-btn"><i class="fab fa-google"></i></div>
+                        <div class="social-btn"><i class="fab fa-facebook-f"></i></div>
+                    </div>
+                </form>
+                
+                <form class="form" id="register-form">
+                    <div class="input-group">
+                        <label for="name">Nombre Completo</label>
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="name" placeholder="Tu nombre" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="register-email">Correo Electrónico</label>
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="register-email" placeholder="tu@email.com" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="register-password">Contraseña</label>
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="register-password" placeholder="Crea una contraseña segura" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="confirm-password">Confirmar Contraseña</label>
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="confirm-password" placeholder="Repite tu contraseña" required>
+                    </div>
+                    
+                    <button type="submit" class="btn">Crear Cuenta</button>
+                    
+                    <div class="separator">o registrarse con</div>
+                    
+                    <div class="social-login">
+                        <div class="social-btn"><i class="fab fa-google"></i></div>
+                        <div class="social-btn"><i class="fab fa-facebook-f"></i></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showForm(formType) {
+            // Ocultar todos los formularios
+            document.querySelectorAll('.form').forEach(form => {
+                form.classList.remove('active');
+            });
+            
+            // Mostrar el formulario seleccionado
+            document.getElementById(formType + '-form').classList.add('active');
+            
+            // Actualizar pestañas activas
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Encontrar y activar la pestaña correspondiente
+            const tabs = document.querySelectorAll('.tab');
+            if (formType === 'login') {
+                tabs[0].classList.add('active');
+            } else {
+                tabs[1].classList.add('active');
+            }
+        }
+        
+        // Manejar envío de formularios
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            //redirige a la página de servicios
+            alert('Iniciando sesión...');
+            window.location.href = "pruebaopciones.html";
+            // Aquí iría la lógica real de inicio de sesión
+        });
+        
+        document.getElementById('register-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Creando cuenta...');
+            // Aquí iría la lógica real de registro
+        });
+    </script>
+</body>
+</html>
